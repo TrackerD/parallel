@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Исходные файлы">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Файлы заголовков">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Файлы ресурсов">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Исходные файлы\Lab1">
+      <UniqueIdentifier>{3c02653f-ad31-4d00-bdb2-51f62df2d7f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Contollers">
+      <UniqueIdentifier>{8a5fba23-7393-4144-93c5-fbad0ad99db8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Lab1">
+      <UniqueIdentifier>{a566bfa5-48e3-4a32-a43b-f035e3bab46a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Controllers">
+      <UniqueIdentifier>{f7daafe6-aca0-4a1e-8bd8-4e90e40d14ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Lab2">
+      <UniqueIdentifier>{fb1ef1c6-ff85-4cba-a647-ceeaa032a1b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Lab2">
+      <UniqueIdentifier>{b6bc6d06-40d4-4c4d-992f-602d56cebc2e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BaseTask.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Lab1.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="ArrayInfo.h">
+      <Filter>Файлы заголовков\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="FifthTask.h">
+      <Filter>Файлы заголовков\Lab1</Filter>
+    </ClInclude>
+    <ClInclude Include="FirstTask.h">
+      <Filter>Файлы заголовков\Lab1</Filter>
+    </ClInclude>
+    <ClInclude Include="FourthTask.h">
+      <Filter>Файлы заголовков\Lab1</Filter>
+    </ClInclude>
+    <ClInclude Include="IOController.h">
+      <Filter>Файлы заголовков\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="MatrixController.h">
+      <Filter>Файлы заголовков\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="SecondTask.h">
+      <Filter>Файлы заголовков\Lab1</Filter>
+    </ClInclude>
+    <ClInclude Include="SixthTask.h">
+      <Filter>Файлы заголовков\Lab1</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdTask.h">
+      <Filter>Файлы заголовков\Lab1</Filter>
+    </ClInclude>
+    <ClInclude Include="Task1L2.h">
+      <Filter>Файлы заголовков\Lab2</Filter>
+    </ClInclude>
+    <ClInclude Include="Task2L2.h">
+      <Filter>Файлы заголовков\Lab2</Filter>
+    </ClInclude>
+    <ClInclude Include="Task3L2.h">
+      <Filter>Файлы заголовков\Lab2</Filter>
+    </ClInclude>
+    <ClInclude Include="Task5L2.h">
+      <Filter>Файлы заголовков\Lab2</Filter>
+    </ClInclude>
+    <ClInclude Include="Task4L2.h">
+      <Filter>Файлы заголовков\Lab2</Filter>
+    </ClInclude>
+    <ClInclude Include="Task6L2.h">
+      <Filter>Файлы заголовков\Lab2</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>Файлы заголовков\Controllers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Lab1.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseTask.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="FifthTask.cpp">
+      <Filter>Исходные файлы\Lab1</Filter>
+    </ClCompile>
+    <ClCompile Include="FirstTask.cpp">
+      <Filter>Исходные файлы\Lab1</Filter>
+    </ClCompile>
+    <ClCompile Include="SecondTask.cpp">
+      <Filter>Исходные файлы\Lab1</Filter>
+    </ClCompile>
+    <ClCompile Include="SixthTask.cpp">
+      <Filter>Исходные файлы\Lab1</Filter>
+    </ClCompile>
+    <ClCompile Include="ThirdTask.cpp">
+      <Filter>Исходные файлы\Lab1</Filter>
+    </ClCompile>
+    <ClCompile Include="FourthTask.cpp">
+      <Filter>Исходные файлы\Lab1</Filter>
+    </ClCompile>
+    <ClCompile Include="IOController.cpp">
+      <Filter>Исходные файлы\Contollers</Filter>
+    </ClCompile>
+    <ClCompile Include="MatrixController.cpp">
+      <Filter>Исходные файлы\Contollers</Filter>
+    </ClCompile>
+    <ClCompile Include="ArrayInfo.cpp">
+      <Filter>Исходные файлы\Contollers</Filter>
+    </ClCompile>
+    <ClCompile Include="Task1L2.cpp">
+      <Filter>Исходные файлы\Lab2</Filter>
+    </ClCompile>
+    <ClCompile Include="Task2L2.cpp">
+      <Filter>Исходные файлы\Lab2</Filter>
+    </ClCompile>
+    <ClCompile Include="Task3L2.cpp">
+      <Filter>Исходные файлы\Lab2</Filter>
+    </ClCompile>
+    <ClCompile Include="Task5L2.cpp">
+      <Filter>Исходные файлы\Lab2</Filter>
+    </ClCompile>
+    <ClCompile Include="Task4L2.cpp">
+      <Filter>Исходные файлы\Lab2</Filter>
+    </ClCompile>
+    <ClCompile Include="Task6L2.cpp">
+      <Filter>Исходные файлы\Lab2</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>Исходные файлы\Contollers</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
