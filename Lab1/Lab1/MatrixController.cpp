@@ -13,22 +13,18 @@ using namespace std;
 
 vector<ArrayInfo> matrices;
 
-void MatrixController::Load()
+void MatrixController::Load()	
 {
 	printf("Matrix loading...\n");
 	IOController ioc;
 
-	CheckMatrix((string(ioc.current_work_dir) + "\\Matrix\\9.txt").c_str(), 3, 3, false);
-
-	CheckMatrix((string(ioc.current_work_dir) + "\\Matrix\\44.txt").c_str(), 4, 4, false);
-
-	//CheckMatrix((string(ioc.current_work_dir) + "\\Matrix\\100.txt").c_str(), 10, 10, false);
-	//CheckMatrix((string(ioc.current_work_dir) + "\\Matrix\\1000.txt").c_str(), 100, 10, false);
-	//CheckMatrix((string(ioc.current_work_dir) + "\\Matrix\\2000.txt").c_str(), 100, 20, false);
+	CheckMatrix((string(ioc.current_work_dir) + "\\Matrix\\100.txt").c_str(), 10, 10, false);
+	CheckMatrix((string(ioc.current_work_dir) + "\\Matrix\\1000.txt").c_str(), 100, 10, false);
+	CheckMatrix((string(ioc.current_work_dir) + "\\Matrix\\2000.txt").c_str(), 100, 20, false);
 	CheckMatrix((string(ioc.current_work_dir) + "\\Matrix\\4000.txt").c_str(), 100, 40, false);
-	//CheckMatrix((string(ioc.current_work_dir) + "\\Matrix\\6000.txt").c_str(), 100, 60, false);
-	//CheckMatrix((string(ioc.current_work_dir) + "\\Matrix\\8000.txt").c_str(), 100, 80, false);
-	//CheckMatrix((string(ioc.current_work_dir) + "\\Matrix\\10000.txt").c_str(), 100, 100, false);
+	CheckMatrix((string(ioc.current_work_dir) + "\\Matrix\\6000.txt").c_str(), 100, 60, false);
+	CheckMatrix((string(ioc.current_work_dir) + "\\Matrix\\8000.txt").c_str(), 100, 80, false);
+	CheckMatrix((string(ioc.current_work_dir) + "\\Matrix\\10000.txt").c_str(), 100, 100, false);
 	//CheckMatrix((string(ioc.current_work_dir) + "\\Matrix\\200200.txt").c_str(), 200, 200, false);
 	//CheckMatrix((string(ioc.current_work_dir) + "\\Matrix\\400400.txt").c_str(), 400, 400, false);
 	//CheckMatrix((string(ioc.current_work_dir) + "\\Matrix\\500500.txt").c_str(), 500, 500, false);
