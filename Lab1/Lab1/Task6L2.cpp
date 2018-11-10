@@ -19,12 +19,12 @@ void Task6L2::DoTaskParallel(ArrayInfo arrayInfo)
 {
 	double *arr = ConvertToODArr(arrayInfo);
 	PrintText("\nBubbleSort\n");
-	StartClock();
+	StartClock(true);
 	bubbleSortP(arr, arrayInfo.GetLength());
 	ShowTime(true);
 	double *arrx = ConvertToODArr(arrayInfo);
 	PrintText("\nQuickSort\n");
-	StartClock();
+	StartClock(true);
 	quickSort_parallel(arrx, arrayInfo.GetLength());
 	ShowTime(true);
 }

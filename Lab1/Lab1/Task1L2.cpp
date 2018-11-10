@@ -29,7 +29,7 @@ void Task1L2::DoTaskSerial(ArrayInfo arrayInfo)
 void Task1L2::DoTaskParallel(ArrayInfo arrayInfo)
 {
 	double *arr = ConvertToODArr(arrayInfo);
-	StartClock();
+	StartClock(true);
 	int totalPositive = 0, totalNegative = 0, totalZero = 0;
 	int i;
 #pragma omp parallel private(i)

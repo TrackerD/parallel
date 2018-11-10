@@ -5,10 +5,14 @@
 #include <omp.h>
 #include "ArrayInfo.h"
 
-void BaseTask::StartClock()
+void BaseTask::StartClock(bool parallel)
 {
 	//start = clock();
 	e1 = omp_get_wtime();
+	if(!parallel)
+		serTime = 0; 
+	else
+		parTime = 0;
 }
 
 void BaseTask::ShowTime(bool parallel)
@@ -22,10 +26,21 @@ void BaseTask::ShowTime(bool parallel)
 
 	snprintf(buff, sizeof(buff), "The above code block was executed in %.25f second(s)\n", time);
 	PrintText(buff);
-	if (parallel)
+	if (parallel) {
 		totalParallelTime += time;
-	else
+		parTime += time;
+	}
+	else {
 		totalConsistentTime += time;
+		serTime += time;
+	}
+	if (parallel) {
+		PrintText("\n=========================================================\n");
+		PrintText(("Serial Time: " + to_string(serTime)).c_str());
+		PrintText(("\nParallel Time: " + to_string(parTime)).c_str());
+		PrintText(("\nParallel faster: " + to_string(serTime / parTime)).c_str());
+		PrintText("\n=========================================================\n");
+	}
 }
 
 void BaseTask::DoAll()

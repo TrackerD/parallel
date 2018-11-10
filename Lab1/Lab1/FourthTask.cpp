@@ -38,7 +38,7 @@ void FourthTask::DoTaskSerial(ArrayInfo arrayInfo)
 void FourthTask::DoTaskParallel(ArrayInfo arrayInfo)
 {
 	int counter = 0;
-	StartClock();
+	StartClock(true);
 #pragma omp parallel for reduction(+:counter)
 	for (int i = 0; i < arrayInfo.rows; i++) {
 		if (arrayInfo.arr[i][index] == 0)

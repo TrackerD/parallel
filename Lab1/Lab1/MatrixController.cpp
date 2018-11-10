@@ -30,6 +30,11 @@ void MatrixController::Load()
 	//CheckMatrix((string(ioc.current_work_dir) + "\\Matrix\\500500.txt").c_str(), 500, 500, false);
 	//CheckMatrix((string(ioc.current_work_dir) + "\\Matrix\\800800.txt").c_str(), 800, 800, false);
 	//CheckMatrix((string(ioc.current_work_dir) + "\\Matrix\\1000000.txt").c_str(), 1000, 1000, false);
+
+	CheckMatrix((string(ioc.current_work_dir) + "\\Matrix\\128.txt").c_str(), 64, 2, false);
+	CheckMatrix((string(ioc.current_work_dir) + "\\Matrix\\512x.txt").c_str(), 512, 512, false);
+	CheckMatrix((string(ioc.current_work_dir) + "\\Matrix\\1024x.txt").c_str(), 1024, 1024, false);
+	CheckMatrix((string(ioc.current_work_dir) + "\\Matrix\\2048x.txt").c_str(), 2048, 2048, false);
 	matrixIds = new long[matrices.size()];
 	for (int i = 0; i < matrices.size(); i++)
 		matrixIds[i] = matrices[i].id;

@@ -14,8 +14,8 @@
 class BaseTask
 {
 public:
-	void StartClock();
-	void ShowTime(bool parallel = false);
+	void StartClock(bool parallel = false);
+	virtual void ShowTime(bool parallel = false);
 	virtual void DoAll();
 	~BaseTask();
 	explicit BaseTask(MatrixController m, int labIndex, int taskIndex);
@@ -30,7 +30,7 @@ protected:
 	MatrixController matrixController;
 	clock_t start, end;
 	FILE *OutputFile;
-	long double totalConsistentTime, totalParallelTime;
+	long double totalConsistentTime, totalParallelTime, serTime, parTime;
 	double e1, e2;
 };
 

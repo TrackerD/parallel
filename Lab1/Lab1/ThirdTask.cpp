@@ -62,7 +62,7 @@ void ThirdTask::DoTaskParallel(ArrayInfo arrayInfo)
 	double*arr = ConvertToODArr(arrayInfo);
 	int counter = 0;
 	double* newArr = new double[max - min];
-	StartClock();
+	StartClock(true);
 #pragma omp parallel for reduction(+:counter)
 	for (int i = 0; i < arrayInfo.rows * arrayInfo.cols; i++) {
 		if (i > min && i < max) {

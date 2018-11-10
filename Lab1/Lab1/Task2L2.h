@@ -7,8 +7,11 @@ public:
 	using BaseTask::BaseTask;
 	void DoTaskSerial(ArrayInfo arrayInfo) override;
 	void DoTaskParallel(ArrayInfo arrayInfo) override;
+	void ShowTime(bool parallel = false) override;
+
 	~Task2L2();
 private:
+	double parallelTime;
 	bool PowerOfTwo(int &Value)
 	{
 		int InitValue = 1;
@@ -19,34 +22,61 @@ private:
 		return false;
 	}
 
-	void PairwiseSum(double* array, int threads, bool useOmp)
+	void CascadeSum(double* arr, int length, double res)
 	{
-		int resultSize = (threads % 2 == 0) ? (threads / 2) : (threads / 2 + 1);
-		double* result = (double*)malloc(resultSize * sizeof(double));
-		int i, resultIterator = 0;
-		double sum = 0;
+		int n = length % 2 == 0 ? n = length : n = length - 1;
+		
+		int i;
+		double * result = (double*)malloc(n/2 * sizeof(double));
+		int threadCount;
+		if (n > 8)
+			threadCount = 8;
+		else if (n == 1)
+			return;
+		else threadCount = n / 2;
+		if (length % 2 != 0) {
+			res += arr[length - 1];
+		}
+		StartClock(true);
 
-#pragma omp parallel private(i, sum) if(useOmp) num_threads(threads)
+#pragma omp parallel default(none) private(i) shared(arr, n, result) num_threads(threadCount)
 		{
-#pragma omp for schedule(runtime)
-			for (i = 0; i < threads; i += 2)
+			int num_threads = omp_get_num_threads();
+			int threadNum = omp_get_thread_num();
+			const int start = threadNum * n / num_threads;
+			const int finish = (threadNum + 1)*n / num_threads;
+#pragma omp single
 			{
-				if (i + 1 == threads)
-					sum = array[i];
-				else
-				{
-					sum = array[i] + array[i + 1];
-					//printf("\nic = %d, thread# %d, array[i] = %f, array[i+1] = %f, sum = %f\n", iterationCounter, omp_get_thread_num(), array[i], array[i + 1], sum);
-				}
-				result[omp_get_thread_num()] = sum;
+				num_threads = omp_get_num_threads();
 			}
+			int index;
+			if (n > num_threads) index = start / 2;
+			else index = start == 0 ? start : start - 1;
+			if(start%2 == 0)
+			for (i = start; i < finish; i += 2) {
+				result[index] = arr[i] + arr[i + 1];
+				//printf("result[%d] = %f\n", index, result[index]);
+				index++;
+			}
+#pragma omp barrier
 		}
+		ShowTime(true);
 
-		if (resultSize == 1)
-		{
-			printf("\n>>>sum = %f<<<\n", result[0]);
+		if (n / 2 > 1) {
+			CascadeSum(result, n/2, res);
 		}
-		else PairwiseSum(result, resultSize, useOmp);
+		else {
+			printf("\nRESULT = %f\n", result[0] + res);
+			printf("TIME = %f\n", parallelTime);
+			PrintText("=========================================================\n");
+			PrintText(("Serial Time: " + to_string(serTime)).c_str());
+			PrintText(("\nParallel Time: " + to_string(parallelTime)).c_str());
+			PrintText(("\nParallel faster: " + to_string(serTime / parallelTime)).c_str());
+			PrintText("\n=========================================================\n");
+			PrintText("=========================================================\n");
+			return;
+		}
 	}
+
 };
 

@@ -39,7 +39,7 @@ void Task4L2::DoTaskParallel(ArrayInfo arrayInfo)
 	double *d = (double *)calloc(arrayInfo.rows*arrayInfo.cols, sizeof(double));
 	double *arr1 = ConvertToODArr(arrayInfo);
 	int i, j, k;
-	StartClock();
+	StartClock(true);
 	double *arr2 = transpParallel(arr1, arrayInfo.rows, arrayInfo.cols);
 	int n = arrayInfo.rows, m = arrayInfo.cols;
 #pragma omp parallel for

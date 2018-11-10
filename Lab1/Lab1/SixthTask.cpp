@@ -41,7 +41,7 @@ void SixthTask::DoTaskParallel(ArrayInfo arrayInfo)
 
 	for (int i = 0; i < arrayInfo.rows; i++)
 		vec[i] = GetRandomDouble(0, 100);
-	StartClock();
+	StartClock(true);
 #pragma omp parallel for schedule(runtime)
 	for (int i = 0; i < arrayInfo.rows; i++)
 	{

@@ -5,42 +5,42 @@
 
 void Task2L2::DoTaskSerial(ArrayInfo arrayInfo)
 {
+
 	double * arr = ConvertToODArr(arrayInfo);
 	int length = arrayInfo.rows * arrayInfo.cols;
+	if (!PowerOfTwo(length))
+		return;
 	int counter = 0;
 	StartClock();
 	for (int step = 1; step < length; step *= 2) {
 		for (int i = step; i < length; i += 2 * step)
 			arr[i - step] += arr[i];
 	}
-	ShowTime();
+	BaseTask::ShowTime();
 	PrintText(("Cascade Summing Result: " + to_string(arr[0])).c_str());
 }
 
 void Task2L2::DoTaskParallel(ArrayInfo arrayInfo)
 {
-	double * arr = ConvertToODArr(arrayInfo);
-	int length = arrayInfo.rows * arrayInfo.cols;
-	int i;
+	int n = arrayInfo.GetLength();
+	if (!PowerOfTwo(n))
+		return;
 	StartClock();
-	for (int step = 1; step < length; step *= 2) {
-#pragma omp parallel for schedule(dynamic, arrayInfo.rows) private(i) default(shared)
-		for (i = step; i < length; i += 2 * step)
-			arr[i - step] += arr[i];
-	}
-//#pragma omp parallel for schedule(dynamic,  arrayInfo.rows) private(step, i) default(shared)
-//		for (step = 0; step < length; step++) {
-//			if (PowerOfTwo(step)) {
-//				{
-//					for (i = step; i < length; i += 2 * step) {
-//						arr[i - step] += arr[i];
-//					}
-//				}
-//			}
-//
-//		}
-	ShowTime(true);
-	PrintText(("Cascade Summing Result: " + to_string(arr[0])).c_str());
+	parallelTime = 0;
+	CascadeSum(ConvertToODArr(arrayInfo), arrayInfo.GetLength(), 0);
+}
+
+void Task2L2::ShowTime(bool parallel)
+{
+	//end = clock();
+	char buff[120];
+	e2 = omp_get_wtime();
+
+	//double time = ((long double)end - start) / ((long double)CLOCKS_PER_SEC);
+	double time = e2 - e1;
+	parallelTime += time;
+	snprintf(buff, sizeof(buff), "Iteration executed in %.25f second(s)\n", time);
+	PrintText(buff);
 }
 
 Task2L2::~Task2L2()

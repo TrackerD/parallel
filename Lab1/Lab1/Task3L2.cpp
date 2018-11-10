@@ -25,7 +25,7 @@ void Task3L2::DoTaskParallel(ArrayInfo arrayInfo)
 	double * arr = ConvertToODArr(arrayInfo);
 	int n = arrayInfo.GetLength(), i;
 	double *partial, *temp;
-	StartClock();
+	StartClock(true);
 
 #pragma omp parallel default(none) private(i) shared(arr, partial, temp, n)
 	{

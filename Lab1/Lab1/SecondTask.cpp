@@ -45,7 +45,7 @@ void SecondTask::DoTaskParallel(ArrayInfo arrayInfo)
 	int arrayLength = GetNonZeroCount(arrayInfo);
 	int counter = 0;
 	double*arr = new double[arrayLength];
-	StartClock();
+	StartClock(true);
 #pragma omp parallel for reduction(+:counter)
 	for (int i = 0; i < arrayInfo.rows; i++) {
 		for (int j = 0; j < arrayInfo.cols; j++) {

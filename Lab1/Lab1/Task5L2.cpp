@@ -25,7 +25,7 @@ void Task5L2::DoTaskParallel(ArrayInfo arrayInfo)
 	double * arr = ConvertToODArr(arrayInfo);
 	double min_val = arr[0];
 	int i;
-	StartClock();
+	StartClock(true);
 #pragma omp parallel for
 	for (i = 0; i < arrayInfo.GetLength(); i++)
 	{

@@ -38,7 +38,7 @@ void FirstTask::DoTaskParallel(ArrayInfo arrayInfo)
 {
 	double sum = 0;
 	double * arr = ConvertToODArr(arrayInfo);
-	StartClock();
+	StartClock(true);
 	int i;
 #pragma omp parallel for default(shared) private(i)  \
 		schedule(static, arrayInfo.rows)      \

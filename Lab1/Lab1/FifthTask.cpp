@@ -47,7 +47,7 @@ void FifthTask::DoTaskParallel(ArrayInfo arrayInfo)
 	double*odArr = ConvertToODArr(arrayInfo);
 	double*newArr = (double *)calloc(arrayInfo.rows*arrayInfo.cols / limit, sizeof(double));
 
-	StartClock();
+	StartClock(true);
 #pragma omp parallel for firstprivate(summa) schedule(dynamic, limit)
 	for (int i = 0; i < arrayInfo.rows*arrayInfo.cols; i++) {
 		if (i % limit == limit - 1 && i != 0)
