@@ -15,7 +15,6 @@ public:
 		*yp = temp;
 	}
 
-	// A function to implement bubble sort 
 	void bubbleSort(double *arr, int n)
 	{
 		int i, j;
@@ -45,7 +44,6 @@ public:
 				quickSort_parallel_internal(array, 0, lenArray - 1, cutoff);
 			}
 		}
-
 	}
 	void quickSort_co(double* array, int lenArray) {
 
@@ -58,7 +56,6 @@ public:
 
 	void quickSort_parallel_internal(double* array, int left, int right, int cutoff)
 	{
-
 		int i = left, j = right;
 		int tmp;
 		int pivot = array[(left + right) / 2];
@@ -80,6 +77,18 @@ public:
 			}
 
 		}
+
+
+		if (((right - left) < cutoff)) {
+			if (left < j) { quickSort_parallel_internal(array, left, j, cutoff); }
+			if (i < right) { quickSort_parallel_internal(array, i, right, cutoff); }
+
+		}
+		else {
+			{ quickSort_parallel_internal(array, left, j, cutoff); }
+			{ quickSort_parallel_internal(array, i, right, cutoff); }
+		}
+
 	}
 };
 
