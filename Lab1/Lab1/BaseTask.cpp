@@ -8,11 +8,12 @@
 void BaseTask::StartClock(bool parallel)
 {
 	//start = clock();
-	e1 = omp_get_wtime();
+
 	if(!parallel)
 		serTime = 0; 
 	else
 		parTime = 0;
+	e1 = omp_get_wtime();
 }
 
 void BaseTask::ShowTime(bool parallel)

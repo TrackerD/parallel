@@ -9,7 +9,7 @@ public:
 	void DoTaskParallel(ArrayInfo arrayInfo) override;
 	~Task4L2();
 private:
-	double *transp(double *arr, int n, int m)
+	double * transp(double *arr, int n, int m)
 	{
 		double *tmp = (double *)calloc(n*m, sizeof(double));
 		for (int i = 0; i < n; ++i) {
@@ -19,9 +19,9 @@ private:
 		}
 		return tmp;
 	}
-	double *transpParallel(double *arr, int n, int m)
+	double * transpParallel(double *arr, int n, int m)
 	{
-		double *tmp = (double *)calloc(n*m, sizeof(double));
+		double * tmp = (double *)calloc(n*m, sizeof(double));
 #pragma omp parallel for
 		for (int i = 0; i < n; ++i) {
 			for (int j = 0; j < n; ++j) {

@@ -25,6 +25,7 @@ void Task6L2::DoTaskParallel(ArrayInfo arrayInfo)
 	double *arrx = ConvertToODArr(arrayInfo);
 	PrintText("\nQuickSort\n");
 	StartClock(true);
+
 	quickSort_parallel(arrx, arrayInfo.GetLength());
 	ShowTime(true);
 }

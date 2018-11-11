@@ -8,8 +8,7 @@ void Task2L2::DoTaskSerial(ArrayInfo arrayInfo)
 
 	double * arr = ConvertToODArr(arrayInfo);
 	int length = arrayInfo.rows * arrayInfo.cols;
-	if (!PowerOfTwo(length))
-		return;
+
 	int counter = 0;
 	StartClock();
 	for (int step = 1; step < length; step *= 2) {
@@ -23,18 +22,15 @@ void Task2L2::DoTaskSerial(ArrayInfo arrayInfo)
 void Task2L2::DoTaskParallel(ArrayInfo arrayInfo)
 {
 	int n = arrayInfo.GetLength();
-	if (!PowerOfTwo(n))
-		return;
-	StartClock();
 	parallelTime = 0;
-	CascadeSum(ConvertToODArr(arrayInfo), arrayInfo.GetLength(), 0);
+	CascadeSum(ConvertToODArr(arrayInfo), arrayInfo.GetLength());
 }
 
 void Task2L2::ShowTime(bool parallel)
 {
 	//end = clock();
-	char buff[120];
 	e2 = omp_get_wtime();
+	char buff[120];
 
 	//double time = ((long double)end - start) / ((long double)CLOCKS_PER_SEC);
 	double time = e2 - e1;

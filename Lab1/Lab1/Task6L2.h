@@ -52,8 +52,6 @@ public:
 
 	}
 
-
-
 	void quickSort_parallel_internal(double* array, int left, int right, int cutoff)
 	{
 		int i = left, j = right;
