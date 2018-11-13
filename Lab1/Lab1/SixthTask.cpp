@@ -41,13 +41,16 @@ void SixthTask::DoTaskParallel(ArrayInfo arrayInfo)
 
 	for (int i = 0; i < arrayInfo.rows; i++)
 		vec[i] = GetRandomDouble(0, 100);
+	int i, j;
+	int n = arrayInfo.rows, m = arrayInfo.cols;
 	StartClock(true);
-#pragma omp parallel for schedule(runtime)
-	for (int i = 0; i < arrayInfo.rows; i++)
+#pragma omp parallel for schedule(dynamic, arrayInfo.rows) private(i,j) shared(n,m)
+	for (i = 0; i < n; i++)
 	{
-		for (int j = 0; j < arrayInfo.cols; j++)
-			in[i] += M[i*arrayInfo.cols + j] * vec[j];
+		for (j = 0; j < m; j++)
+			in[i] += M[i*m + j] * vec[j];
 	}
+
 	ShowTime(true);
 	fprintf(OutputFile, "\nResult Array: \n");
 	for(int i =0; i < arrayInfo.rows;i++)

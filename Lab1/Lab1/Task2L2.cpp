@@ -24,6 +24,8 @@ void Task2L2::DoTaskParallel(ArrayInfo arrayInfo)
 	int n = arrayInfo.GetLength();
 	parallelTime = 0;
 	CascadeSum(ConvertToODArr(arrayInfo), arrayInfo.GetLength());
+	parallelTime = 0;
+	CascadeSumOptimized(ConvertToODArr(arrayInfo), arrayInfo.GetLength());
 }
 
 void Task2L2::ShowTime(bool parallel)

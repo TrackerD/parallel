@@ -13,7 +13,7 @@ private:
 	{
 		double *tmp = (double *)calloc(n*m, sizeof(double));
 		for (int i = 0; i < n; ++i) {
-			for (int j = 0; j < n; ++j) {
+			for (int j = 0; j < m; ++j) {
 				tmp[i*m + j] = arr[j*m + i];
 			}
 		}
@@ -22,9 +22,10 @@ private:
 	double * transpParallel(double *arr, int n, int m)
 	{
 		double * tmp = (double *)calloc(n*m, sizeof(double));
-#pragma omp parallel for
+		int i, j;
+#pragma omp parallel for private(i,j) shared(n,m)
 		for (int i = 0; i < n; ++i) {
-			for (int j = 0; j < n; ++j) {
+			for (int j = 0; j < m; ++j) {
 				tmp[i*m + j] = arr[j*m + i];
 			}
 		}

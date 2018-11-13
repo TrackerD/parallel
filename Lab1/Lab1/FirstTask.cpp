@@ -40,10 +40,11 @@ void FirstTask::DoTaskParallel(ArrayInfo arrayInfo)
 	double * arr = ConvertToODArr(arrayInfo);
 	StartClock(true);
 	int i;
+	int n = arrayInfo.rows, m = arrayInfo.cols;
 #pragma omp parallel for default(shared) private(i)  \
 		schedule(static, arrayInfo.rows)      \
 		reduction(+:sum)
-		for (i = 0; i < arrayInfo.rows * arrayInfo.cols; i++) {
+		for (i = 0; i < n * m; i++) {
 			sum += arr[i] * k;
 		}
 		ShowTime(true);

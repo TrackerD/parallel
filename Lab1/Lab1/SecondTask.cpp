@@ -46,9 +46,11 @@ void SecondTask::DoTaskParallel(ArrayInfo arrayInfo)
 	int counter = 0;
 	double*arr = new double[arrayLength];
 	StartClock(true);
-#pragma omp parallel for reduction(+:counter)
-	for (int i = 0; i < arrayInfo.rows; i++) {
-		for (int j = 0; j < arrayInfo.cols; j++) {
+	int i, j;
+	int n = arrayInfo.rows, m = arrayInfo.cols;
+#pragma omp parallel for reduction(+:counter) private(i,j) shared(n,m)
+	for (i = 0; i < n; i++) {
+		for (j = 0; j < m; j++) {
 			if (arrayInfo.arr[i][j] != 0) {
 				arr[counter] = arrayInfo.arr[i][j];
 				++counter;
