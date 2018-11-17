@@ -81,35 +81,22 @@ private:
 	}
 	void CascadeSumOptimized(double *arr, int startLength)
 	{
-		int n = startLength % 2 == 0 ? n = startLength : n = startLength - 1;
-		int i;
-		int threadCount;
-		if (startLength % 2 != 0)
-			startLength -= 1;
-		int iterationCounter = 1;
+		int i, threadCount, step, lastOdd, iterationCounter = 1, n = startLength;
+		int maxThreads = 64;
+		double oddSum = 0;
+
 		while (n > 1) {
-			int temp = 1 << iterationCounter;
-			int temp2 = 1 << (iterationCounter - 1);
-			if (n / 2 > 8)
-				threadCount = 8;
-			else threadCount = n / 2;
+			threadCount = iterationCounter == 1 ? GetThreadsCount(startLength, maxThreads) : GetThreadsCount(n, maxThreads);
+			step = 1 << iterationCounter;
+			lastOdd = (n/2) * step;
+			if (n % 2 != 0) 
+				oddSum += arr[lastOdd];
 			StartClock(true);
-#pragma omp parallel default(none) private(i) shared(arr, n, threadCount, temp, temp2, startLength) num_threads(threadCount)
-			{
-				int threadNum = omp_get_thread_num();
-				int start = threadNum * startLength / threadCount;
-				if (start % 2 != 0) start += 1;
-				int finish = (threadNum + 1)*startLength / threadCount;
 
-				for (i = start; i < finish; i += temp) {
-					if (i + temp2 < startLength) {
-						//printf("arr[%d] = %f, arr2[%d] = %f, RESULT = %f\n", i, arr[i], i + temp2, arr[i + temp2], arr[i] + arr[i+temp2]);
-
-						arr[i] += arr[i + temp2];
-
-					}
-					else 
-						arr[startLength] += arr[i];
+#pragma omp parallel for private(i) schedule(static, startLength/threadCount)
+			for (i = 0; i < startLength; i += step) {
+				if (i < lastOdd) {
+					arr[i] += arr[i + step/2];
 				}
 			}
 			ShowTime(true);
@@ -117,10 +104,13 @@ private:
 			iterationCounter++;
 		}
 
-		printf("\nRESULT = %f\n", arr[0] + arr[startLength]);
+		printf("\nRESULT = %f\n", arr[0] + oddSum);
 		printf("TIME = %.25f\n", parallelTime);
 
 	}
-
+	int GetThreadsCount(int arrayLength, int maxThreads) {
+		int result = arrayLength / 2;
+		return result < maxThreads ? result : maxThreads;
+	}
 };
 

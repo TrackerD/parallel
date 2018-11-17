@@ -22,7 +22,7 @@ void MatrixController::Load()
 	CheckMatrix((string(ioc.current_work_dir) + "\\Matrix\\x13.txt").c_str(), 13, 1, false);
 	CheckMatrix((string(ioc.current_work_dir) + "\\Matrix\\x15.txt").c_str(), 15, 1, false);
 	CheckMatrix((string(ioc.current_work_dir) + "\\Matrix\\x16.txt").c_str(), 16, 1, false);
-	CheckMatrix((string(ioc.current_work_dir) + "\\Matrix\\x28.txt").c_str(), 28, 1, false);
+	CheckMatrix((string(ioc.current_work_dir) + "\\Matrix\\x30.txt").c_str(), 30, 1, false);
 	CheckMatrix((string(ioc.current_work_dir) + "\\Matrix\\x32.txt").c_str(), 32, 1, false);
 
 
@@ -30,17 +30,17 @@ void MatrixController::Load()
 	CheckMatrix((string(ioc.current_work_dir) + "\\Matrix\\100.txt").c_str(), 10, 10, false);
 	CheckMatrix((string(ioc.current_work_dir) + "\\Matrix\\20x20.txt").c_str(), 20, 20, false);
 
-	//CheckMatrix((string(ioc.current_work_dir) + "\\Matrix\\1000.txt").c_str(), 100, 10, false);
-	//CheckMatrix((string(ioc.current_work_dir) + "\\Matrix\\2000.txt").c_str(), 100, 20, false);
-	//CheckMatrix((string(ioc.current_work_dir) + "\\Matrix\\4000.txt").c_str(), 100, 40, false);
+	CheckMatrix((string(ioc.current_work_dir) + "\\Matrix\\1000.txt").c_str(), 100, 10, false);
+	CheckMatrix((string(ioc.current_work_dir) + "\\Matrix\\2000.txt").c_str(), 100, 20, false);
+	CheckMatrix((string(ioc.current_work_dir) + "\\Matrix\\4000.txt").c_str(), 100, 40, false);
 	//CheckMatrix((string(ioc.current_work_dir) + "\\Matrix\\6000.txt").c_str(), 100, 60, false);
 	//CheckMatrix((string(ioc.current_work_dir) + "\\Matrix\\8000.txt").c_str(), 100, 80, false);
 	//CheckMatrix((string(ioc.current_work_dir) + "\\Matrix\\10000.txt").c_str(), 100, 100, false);
 	//CheckMatrix((string(ioc.current_work_dir) + "\\Matrix\\200200.txt").c_str(), 200, 200, false);
 	//CheckMatrix((string(ioc.current_work_dir) + "\\Matrix\\400400.txt").c_str(), 400, 400, false);
-	//CheckMatrix((string(ioc.current_work_dir) + "\\Matrix\\500500.txt").c_str(), 500, 500, false);
-	//CheckMatrix((string(ioc.current_work_dir) + "\\Matrix\\800800.txt").c_str(), 800, 800, false);
-	//CheckMatrix((string(ioc.current_work_dir) + "\\Matrix\\1000000.txt").c_str(), 1000, 1000, false);
+	CheckMatrix((string(ioc.current_work_dir) + "\\Matrix\\500500.txt").c_str(), 500, 500, false);
+	CheckMatrix((string(ioc.current_work_dir) + "\\Matrix\\800800.txt").c_str(), 800, 800, false);
+	CheckMatrix((string(ioc.current_work_dir) + "\\Matrix\\1000000.txt").c_str(), 1000, 1000, false);
 
 	//CheckMatrix((string(ioc.current_work_dir) + "\\Matrix\\128.txt").c_str(), 64, 2, false);
 	//CheckMatrix((string(ioc.current_work_dir) + "\\Matrix\\512x.txt").c_str(), 512, 512, false);
